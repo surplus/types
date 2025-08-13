@@ -1,0 +1,27 @@
+{
+	"name": "@surplus/types",
+	"version": "1.0.0",
+	"description": "TypeScript types for Surplus-flavored JSX files",
+	"main": "index.js",
+	"types": "index.d.ts",
+	"scripts": {
+		"format": "prettier -w .",
+		"lint": "pnpm lint:types && pnpm lint:format",
+		"lint:format": "prettier -c .",
+		"lint:types": "tsc",
+		"prepublish": "lint"
+	},
+	"keywords": [
+		"surplus",
+		"framework",
+		"typescript",
+		"types",
+		"factory"
+	],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.14.0",
+	"devDependencies": {
+		"prettier": "^3.6.2"
+	}
+}
