@@ -4,6 +4,12 @@
 	"description": "TypeScript types for Surplus-flavored JSX files",
 	"main": "index.js",
 	"types": "index.d.ts",
+	"files": [
+		"LICENSE.txt",
+		"index.js",
+		"index.d.ts",
+		"jsx-runtime"
+	],
 	"scripts": {
 		"format": "prettier -w .",
 		"lint": "pnpm lint:types && pnpm lint:format",
