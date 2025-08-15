@@ -8,13 +8,15 @@
 		"LICENSE.txt",
 		"index.js",
 		"index.d.ts",
-		"jsx-runtime"
+		"jsx-runtime/index.d.ts",
+		"jsx-runtime/index.js"
 	],
 	"scripts": {
 		"format": "prettier -w .",
 		"lint": "pnpm lint:types && pnpm lint:format",
 		"lint:format": "prettier -c .",
-		"lint:types": "tsc",
+		"lint:types": "tsc --noEmit",
+		"build": "tsc",
 		"prepare": "pnpm lint"
 	},
 	"keywords": [

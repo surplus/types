@@ -2,16 +2,14 @@
 	"compilerOptions": {
 		"target": "ES2017",
 		"lib": ["dom", "dom.iterable", "esnext"],
+		"outDir": "jsx-runtime",
 		"allowJs": true,
+		"declaration": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"noEmit": true,
 		"esModuleInterop": true,
 		"module": "esnext",
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"incremental": true
+		"isolatedModules": true
 	},
-	"include": ["index.d.ts"],
-	"exclude": ["node_modules", "index.js"]
+	"include": ["src/index.ts"]
 }

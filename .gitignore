@@ -1,2 +1,4 @@
 node_modules/
 *.tsbuildinfo
+/jsx-runtime/index.d.ts
+/jsx-runtime/index.js
