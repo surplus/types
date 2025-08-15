@@ -1,6 +1,6 @@
 {
 	"name": "@surplus/types",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "TypeScript types for Surplus-flavored JSX files",
 	"main": "index.js",
 	"types": "index.d.ts",
