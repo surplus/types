@@ -1,29 +1,49 @@
-throw new Error("this file should never be executed; it does nothing");
+declare global {
+	namespace Surplus {
+		interface BaseElement {
+			children: Children;
+			style: string;
+			fn: (e: this) => void;
+			ref: this;
+			class: string;
+		}
 
-declare namespace Surplus {
-	interface SurplusElement {
-		children: (HTMLElement | string)[];
-		style: { [key: string]: string } | string;
+		export type Element<T extends HTMLElement = HTMLElement> = Omit<
+			T,
+			keyof BaseElement
+		> &
+			BaseElement;
+		export type Children<T extends HTMLElement = HTMLElement> =
+			| string
+			| Element
+			| (string | Element<T>)[];
 	}
 }
 
-declare function element(): void;
-
-type E<T extends HTMLElement> = Partial<
-	Omit<T, "style" | "children"> & Surplus.SurplusElement
->;
+export function jsx<P>(
+	type: string,
+	props: any,
+	key?: string,
+): Surplus.Element<HTMLInputElement> {
+	return null as unknown as any;
+}
 
 export namespace JSX {
-	export interface IntrinsicElements {
-		div: E<HTMLDivElement>;
-		input: E<HTMLInputElement>;
-	}
+	export type Element = Surplus.Element;
+
+	export type IntrinsicElements = {
+		[K in keyof HTMLElementTagNameMap]: Partial<
+			Surplus.Element<HTMLElementTagNameMap[K]>
+		>;
+	};
 
 	export interface ElementChildrenAttribute {
-		children?: (HTMLElement | string)[];
+		children?: (string | Surplus.Element)[];
 	}
 
 	export interface IntrinsicAttributes {
 		key?: any;
 	}
 }
+
+throw new Error("this file should never be executed; it does nothing");
