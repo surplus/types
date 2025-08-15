@@ -26,6 +26,11 @@
 		"types",
 		"factory"
 	],
+	"homepage": "https://github.com/surplus/types",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/surplus/types.git"
+	},
 	"author": "Joshua Lee Junon (https://github.com/qix-)",
 	"license": "MIT",
 	"packageManager": "pnpm@10.14.0",
