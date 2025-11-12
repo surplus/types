@@ -1,3 +1,5 @@
+type ToString = { toString(): string };
+
 export namespace Surplus {
 	interface BaseElement {
 		children: Children;
@@ -12,10 +14,14 @@ export namespace Surplus {
 		keyof BaseElement
 	> &
 		BaseElement;
+
+	export type Child<T extends HTMLElement = HTMLElement> =
+		| ToString
+		| Element<T>;
+
 	export type Children<T extends HTMLElement = HTMLElement> =
-		| string
-		| Element
-		| (string | Element<T>)[];
+		| Child<T>
+		| Child<T>[];
 }
 
 export function jsx<P>(
@@ -38,11 +44,11 @@ export namespace JSX {
 	};
 
 	export interface ElementChildrenAttribute {
-		children?: (string | Surplus.Element)[];
+		children?: Surplus.Children;
 	}
 
 	export interface IntrinsicAttributes {
-		key?: any;
+		children?: Surplus.Children;
 	}
 }
 
