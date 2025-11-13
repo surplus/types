@@ -1,5 +1,7 @@
 type ToString = { toString(): string };
 
+type AnyElement = HTMLElement | SVGElement;
+
 export namespace Surplus {
 	interface BaseElement {
 		children: Children;
@@ -9,17 +11,17 @@ export namespace Surplus {
 		class: string;
 	}
 
-	export type Element<T extends HTMLElement = HTMLElement> = Omit<
+	export type Element<T extends AnyElement = AnyElement> = Omit<
 		T,
 		keyof BaseElement
 	> &
 		BaseElement;
 
-	export type Child<T extends HTMLElement = HTMLElement> =
+	export type Child<T extends AnyElement = AnyElement> =
 		| ToString
 		| Element<T>;
 
-	export type Children<T extends HTMLElement = HTMLElement> =
+	export type Children<T extends AnyElement = AnyElement> =
 		| Child<T>
 		| Child<T>[];
 }
@@ -28,19 +30,19 @@ export function jsx<P>(
 	type: string,
 	props: any,
 	key?: string,
-): Surplus.Element<HTMLInputElement> {
+): Surplus.Element {
 	throw new Error(
 		"do not directly call this function; this library does nothing functional",
 	);
 }
 
+type AllElements = HTMLElementTagNameMap & SVGElementTagNameMap;
+
 export namespace JSX {
 	export type Element = Surplus.Element;
 
 	export type IntrinsicElements = {
-		[K in keyof HTMLElementTagNameMap]: Partial<
-			Surplus.Element<HTMLElementTagNameMap[K]>
-		>;
+		[K in keyof AllElements]: Partial<Surplus.Element<AllElements[K]>>;
 	};
 
 	export interface ElementChildrenAttribute {
